@@ -20,21 +20,32 @@ const formReq = {
 // Check client status
 // If no authed, will send back auth page
 const doReq = function() {
+  const date = new Date()
+  console.log(`${date.getHours()}:${date.getMinutes()} checking authorization...`)
+  
   request(baseUrl + '/clientStatus.!%5E', function (error, response, body) {
     const noAuthed = body.includes('UF SafeConnect')
 
     if (noAuthed) {
       request.post(formReq, function (err, httpResponse, body) {
-        if (err) console.log(err)
+        if (err) {
+          console.log('failed to authenticate')
+          console.log(err)
+        } else {
+          console.log('successfully authenticated')
+        }
+
         console.log('res', httpResponse.toJSON())
         console.log('body', body)
       })
     } else {
-      console.log('already authed')
+      console.log('already authenticated')
     }
   })
 }
 
-setInterval(function () {
+
+doReq() // Check auth on start
+setInterval(function () { // Every 15 min, auth
   doReq()
 }, 1000*60*15)
