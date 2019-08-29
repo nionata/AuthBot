@@ -21,7 +21,7 @@ const formReq = {
 // If no authed, will send back auth page
 const doReq = function() {
   const date = new Date()
-  console.log(`${date.getHours()}:${date.getMinutes()} checking authorization...`)
+  console.log(`${date.getHours()}:${date.getMinutes()} checking authentication...`)
   
   request(baseUrl + '/clientStatus.!%5E', function (error, response, body) {
     const noAuthed = body.includes('UF SafeConnect')
