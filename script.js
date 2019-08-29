@@ -27,16 +27,16 @@ const doReq = function() {
     const noAuthed = body.includes('UF SafeConnect')
 
     if (noAuthed) {
-      request.post(formReq, function (err, httpResponse, body) {
-        if (err) {
-          console.log('failed to authenticate')
-          console.log(err)
-        } else {
-          console.log('successfully authenticated')
-        }
+      request.post(formReq, function (err, httpResponse) {
+        if (err) console.log(err)
 
-        console.log('res', httpResponse.toJSON())
-        console.log('body', body)
+        const response = httpResponse.toJSON()
+
+        if (response.statusCode === 303) {
+          console.log('successfully authenticated')
+        } else {
+          console.log('failed to authenticate');
+        }
       })
     } else {
       console.log('already authenticated')
@@ -48,4 +48,4 @@ const doReq = function() {
 doReq() // Check auth on start
 setInterval(function () { // Every 15 min, auth
   doReq()
-}, 1000*60*15)
+}, 1000*60*1)
