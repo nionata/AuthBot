@@ -1,0 +1,228 @@
+<html><head><style>#table1{width:100%;}</style>
+
+
+    <!-- BEGINNING -->
+    
+    
+    <!-- SIMPLE -->
+    
+    <title>UF SafeConnect</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <script language="JavaScript" src="/js/util.js"></script>
+        <link rel="stylesheet" href="/css/impulse.css" type="text/css">
+        <meta http-equiv="Pragma" content="no-cache">
+    </head>
+    
+    <body>
+         <link rel="stylesheet" href="/conf/css/colors.css" type="text/css">	
+            <script type="text/javascript" src="/common/js/common.js"></script>
+            <link rel="stylesheet" href="/common/css/common.css" type="text/css">
+    
+    
+    <!-- JAVASCRIPT -->
+    <script language="JavaScript" type="text/javascript">
+    function validateForm(form)
+    {
+      if(!form.userId.value)
+      {
+          alert("The username field cannot be blank");
+          return false;
+    
+      }
+      if(!form.pass.value)
+      {
+             alert("The password field cannot be blank");
+                   return false;
+      }
+      
+      form.platform.value = navigator.platform;
+      form.appversion.value = navigator.appVersion;
+      
+      return true;
+    }
+    
+    var ostype=new OSType(); 
+    if (ostype.isMac){
+        oVDiv=document.getElementById("pcinstall").style.display="none";
+        oVDiv=document.getElementById("macinstall").style.display="block";	
+        oVDiv=document.getElementById("pcserviceinstall").style.display="none";
+    }
+    else if (ostype.winvista) {
+        oVDiv=document.getElementById("pcinstall").style.display="none";
+        oVDiv=document.getElementById("macinstall").style.display="none";
+        oVDiv=document.getElementById("pcserviceinstall").style.display="block";
+    }
+    else {
+        oVDiv=document.getElementById("pcinstall").style.display="block";
+        oVDiv=document.getElementById("macinstall").style.display="none";
+        oVDiv=document.getElementById("pcserviceinstall").style.display="none";
+    }
+    
+    function acceptPolicy(checkbox){	
+        //var bool=document.getelementById("accptPlcy").checked;
+        
+        if(checkbox.checked)
+        {
+            //alert("checked");
+            document.getElementById("subBtn").disabled=false;
+        }
+        else{
+            document.getElementById("subBtn").disabled=true;
+        }
+        
+    }
+    // Popup window code
+    function newPopup(url) {
+        popupWindow = window.open(
+            url,'popUpWindow','height=700,width=1100,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+    }
+    
+    </script>
+    
+    <style type="text/css">
+    
+    .optionsTable{
+       table-layout:auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .optionButton {
+        border-width: 3px;
+       border-style: solid;
+       -moz-border-radius: 25px 25px 25px 25px;
+       border-radius: 25px 25px 25px 25px;
+       -moz-box-shadow: 3px 3px 3px #888;
+       -webkit-box-shadow: 3px 3px 3px #888;
+       box-shadow: 3px 3px 3px #888;
+    }
+    
+    .optionText {
+            text-align: center;
+            font: 12px Verdana, Arial, Helvetica, sans-serif;
+            font-weight:bold;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 5px 10px 5px 10px;
+            width:200px;
+            height:30px;
+            text-align:center;
+            cursor: pointer;
+    }
+    
+    .loginformdiv{
+        padding: 0px 0px 0px 0px;
+            width:400px;        
+            height:100%;
+       table-layout:auto;
+        margin-left: auto;             
+        margin-right: auto;
+    }
+    
+    .bigger{
+            font-size: 16px;
+    }
+    
+    </style>
+    
+    
+    <div id="MASTHEAD">
+    <p align="center">
+    <img src="/images/uf_inst_logo.png">
+    </p>
+    </div>
+    <div align="center">
+    <table border="0" width="750" id="master2global3table">
+        <tbody><tr>
+            <td>
+    <div id="TITLE">
+    <h4 align="center"><font color="#000000">
+    
+        <div class="stdMainTitle compBack03" onclick="window.location.reload()">
+            Please Login with your UF Gatorlink userid
+        </div>
+    
+    </font></h4>
+    </div>
+    <div id="GENERAL">
+    <h4 align="center"><font color="#000000"></font></h4>
+    </div>
+    <div style="display: none;" id="warning">
+    <h4 align="center"><font color="#000000"></font></h4>
+    <!-- WARNING -->
+    <h5 align="center"><font color="#000000"></font></h5>
+    </div>
+    <div style="display: block;" id="quarantine">
+    <h5 align="center"><font color="#000000">
+            By using this connection you agree to the <a href="javascript:newPopup('http://www.it.ufl.edu/policies/acceptable-use/acceptable-use-policy/');"><span style="font-family: Arial; font-size: 12pt">UF Acceptable Use Policy (AUP)</span></a>
+        </font></h5>
+    <!-- QUARANTINE -->
+    <h5 align="center"><font color="#000000">
+    <div align="center">
+            <table width="800">
+                
+                <tbody><tr align="center">
+                                <td>
+                        <div class="optionText optionButton backgroundButton primText03 compBack03 loginformdiv" align="center" onclick="redirect('https://auth.impulse.com:8443/endUserGuest.!^');">
+                                        <form action="https://auth.impulse.com:8443/authenticate.!^" name="loginForm" method="post" style="text-align:center" onsubmit="return validateForm(this)">
+                                                <table width="100%" id="table2" align="center">
+                                                        <tbody><tr>
+                                                                <td colspan="2">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>
+                                                                        <p align="right"><label for="username">Gatorlink Username:</label></p></td>
+                                                                <td>
+                                                                <input type="text" name="userId" id="   " tabindex="1" accesskey="u" value="" size="16"></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td>
+                                                                        <p align="right">Password:</p></td>
+                                                                <td>
+                                                                <input type="password" name="pass" id="password" tabindex="2" accesskey="p" value="" size="16"></td>
+                                                        </tr>
+                                                        <tr>
+    
+                                                        <input type="HIDDEN" name="platform">
+                                                        <input type="HIDDEN" name="appversion">
+    
+                                                        </tr>
+                                                        <tr>
+                                                                <td colspan="2">
+                                                                <p align="center">
+                                                                </p><div style="display: block;" id="autherror">
+                                                                                <h5 align="center"><font color="#000000">Please enter valid credentials and check the box below to indicate your acceptance of the AUP.</font></h5>
+                                                                        </div>
+                                                                <p align="center">
+                                                                <input type="checkbox" id="accptPlcy" tabindex="3" value="accept" onclick="acceptPolicy(this)">I accept the acceptable use policy.<br>
+                                                                <br>
+                                                                <input type="submit" id="subBtn" tabindex="4" accesskey="l" value="Submit" disabled=""></p></td>
+                                                        </tr>
+    
+                                                </tbody></table>
+    
+                                        </form>
+                        </div>
+                                </td>
+                    </tr>
+    
+                   
+    
+         
+        </tbody></table> 
+    </div></font></h5>
+    </div>
+    <!-- END MESSAGING -->
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+    <div id="FOOT">
+    <p align="center">
+    <img src="/images/footer-uf-logo.png">
+    </p>
+    </div>
+    <!-- ENDING -->
+    
+    
+    </body></html>
