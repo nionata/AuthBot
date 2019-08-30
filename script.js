@@ -23,23 +23,29 @@ const doReq = function() {
   const date = new Date()
   console.log(`${date.getHours()}:${date.getMinutes()} checking authentication...`)
   
-  request(baseUrl + '/clientStatus.!%5E', function (error, response, body) {
-    const noAuthed = body.includes('UF SafeConnect')
+  request(baseUrl + '/clientStatus.!%5E', function (err, response, body) {
+    if(err) console.log(err)
+    
+    if (body) {
+      const noAuthed = body.includes('UF SafeConnect')
 
-    if (noAuthed) {
-      request.post(formReq, function (err, httpResponse) {
-        if (err) console.log(err)
+      if (noAuthed) {
+        request.post(formReq, function (err, httpResponse) {
+          if (err) console.log(err)
 
-        const response = httpResponse.toJSON()
+          const response = httpResponse.toJSON()
 
-        if (response.statusCode === 303) {
-          console.log('successfully authenticated')
-        } else {
-          console.log('failed to authenticate');
-        }
-      })
+          if (response.statusCode === 303) {
+            console.log('successfully authenticated')
+          } else {
+            console.log('failed to authenticate');
+          }
+        })
+      } else {
+        console.log('already authenticated')
+      }
     } else {
-      console.log('already authenticated')
+      console.log('failed to check status')
     }
   })
 }
