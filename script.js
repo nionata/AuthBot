@@ -7,8 +7,8 @@ const request = require('request').defaults({
 
 const baseUrl = 'https://auth.impulse.com:8443'
 const form = {
-  userId: "big",
-  pass: "penis",
+  userId: "test",
+  pass: "test",
   platform: "MacIntel",
   appversion: "5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Mobile Safari/537.36"
 }
